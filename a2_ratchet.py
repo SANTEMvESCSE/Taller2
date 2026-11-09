@@ -1,4 +1,4 @@
-"""Sprint 3 - Algoritmo A2: Double Ratchet reducido (X25519 + HKDF-SHA256 + AES-256-GCM).
+"""Algoritmo A2: Double Ratchet reducido (X25519 + HKDF-SHA256 + AES-256-GCM).
 
 Implementación académica del protocolo Double Ratchet reducido para el taller
 "Seguridad en Messenger". Combina:
