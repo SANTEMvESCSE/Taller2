@@ -1,6 +1,6 @@
 # Informe Técnico de Implementación y Análisis: Seguridad en Messenger
 
-**Taller:** Seguridad en Messenger — Sprint 5 (Documentación e Informe)
+**Taller:** Seguridad en Messenger — (Documentación e Informe)
 
 ---
 
