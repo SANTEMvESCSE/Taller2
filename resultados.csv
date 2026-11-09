@@ -1,0 +1,10 @@
+id_prueba,algoritmo,propiedad,descripcion,esperado,obtenido,estado,comentario
+A1-01,A1,determinismo,Misma cadena e índice producen la misma clave,misma clave,misma clave,OK,HKDF-SHA256 determinista produce identica clave de 32 bytes
+A1-02,A1,unicidad,10 claves de mensaje distintas,10 claves distintas,10 claves distintas,OK,Las 10 claves derivadas en la cadena son criptograficamente unicas
+A1-03,A1,cifrado,Cifrar y descifrar 10 mensajes,10/10 correctos,10/10 correctos,OK,Cifrado y descifrado autenticado AES-256-GCM exitoso en los 10 mensajes
+A1-04,A1,borrado,Clave usada y luego borrada no se recupera,no recuperable,no recuperable,OK,Clave efimera eliminada tras su uso y cadena avanzada irreversiblemente
+A2-01,A2,descifrado,Descifrar los 6 mensajes,6/6 correctos,6/6 correctos,OK,Intercambio de 6 mensajes con rotacion de claves X25519 descifrado al 100%
+A2-02,A2,integridad,Un byte alterado del ciphertext,rechazado,rechazado,OK,Etiqueta de autenticacion AES-GCM detecta alteracion de 1 byte y rechaza paquete
+A2-03,A2,repetición,Mensaje reenviado,rechazado,rechazado,OK,Control anti-replay detecta identificador duplicado y rechaza mensaje reenviado
+A2-04,A2,forward secrecy,Estado robado tras mensaje 3 no descifra mensaje 1,no descifrable,no descifrable,OK,Avance unidireccional HKDF y borrado de MK impiden descifrar mensajes previos
+A2-05,A2,post-compromise,Estado robado antes del cambio de dirección no descifra tras él,no descifrable,no descifrable,OK,Nuevo par efimero X25519 en cambio de direccion renueva clave raiz y bloquea estado robado
