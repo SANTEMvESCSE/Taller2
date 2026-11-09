@@ -1,6 +1,6 @@
 # Ficha Técnica: Cifrado de Extremo a Extremo (E2EE) y Secreto Hacia Adelante (Forward Secrecy)
 
-**Taller:** Seguridad en Messenger — Sprint 1 (Investigación Teórica)
+**Taller:** Seguridad en Messenger — (Investigación Teórica)
 
 ---
 
@@ -42,8 +42,11 @@ El protocolo **Signal** materializa el *Forward Secrecy* por mensaje y la *Post-
    * **Destrucción inmediata:** Una vez cifrado (o descifrado y verificado) el mensaje $i$, tanto $MK_i$ como el estado anterior $CK_i$ se eliminan inmediatamente de la memoria del dispositivo, conservando únicamente $CK_{i+1}$.
 
 2. **Diffie-Hellman Ratchet (Trinquete Asimétrico sobre Curva Elíptica X25519):**
-Cada vez que cambia la dirección de la conversación (un interlocutor responde al otro), el emisor genera un nuevo par de claves efímeras Diffie-Hellman sobre la curva Curve25519 (X25519) y adjunta su nueva clave pública en la cabecera del mensaje. Ambos extremos calculan un nuevo secreto compartido $\text{DH}_{\text{out}}$ y actualizan su clave raíz (Root Key, $RK$) junto con una nueva clave de cadena inicial ($CK_0$):$$ $$
-RK_{n+1}, CK_0 = \text{KDF}(RK_n, \text{DH}(dh_{\text{priv}}, dh_{\text{pub, remota}}))$$ $$Esta inyección periódica de entropía fresca asegura que incluso si un atacante extrajo $CK_i$ en un turno previo, no podrá calcular las claves del siguiente turno sin conocer la clave privada efímera recién generada.
+Cada vez que cambia la dirección de la conversación (un interlocutor responde al otro), el emisor genera un nuevo par de claves efímeras Diffie-Hellman sobre la curva Curve25519 (X25519) y adjunta su nueva clave pública en la cabecera del mensaje. Ambos extremos calculan un nuevo secreto compartido $\text{DH}_{\text{out}}$ y actualizan su clave raíz (Root Key, $RK$) junto con una nueva clave de cadena inicial ($CK_0$):
+```math
+RK_{n+1}, CK_0 = \text{KDF}(RK_n, \text{DH}(dh_{\text{priv}}, dh_{\text{remota}}))
+```
+Esta inyección periódica de entropía fresca asegura que incluso si un atacante extrajo $CK_i$ en un turno previo, no podrá calcular las claves del siguiente turno sin conocer la clave privada efímera recién generada.
 
 ---
 
